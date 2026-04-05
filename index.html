@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dice Check Roller</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="panel">
+        <h1>Dice Check Roller</h1>
+        <p class="intro">
+          Each die is its own check. Set the number of dice, die size, modifier,
+          and difficulty, then roll.
+        </p>
+
+        <section class="control-card">
+          <h2>Primary Check</h2>
+          <form id="roller-form" class="form">
+            <div class="dice-inputs">
+              <label class="field">
+                <span>Dice count</span>
+                <input
+                  id="dice-count"
+                  name="diceCount"
+                  type="number"
+                  value="1"
+                  min="1"
+                  max="999"
+                />
+              </label>
+
+              <div class="separator" aria-hidden="true">d</div>
+
+              <label class="field">
+                <span>Die size</span>
+                <input
+                  id="dice-sides"
+                  name="diceSides"
+                  type="number"
+                  value="20"
+                  min="2"
+                  max="999"
+                />
+              </label>
+
+              <div class="separator" aria-hidden="true">+</div>
+
+              <label class="field">
+                <span>Modifier</span>
+                <input
+                  id="modifier"
+                  name="modifier"
+                  type="number"
+                  value="0"
+                  min="-999"
+                  max="999"
+                />
+              </label>
+            </div>
+
+            <label class="field">
+              <span>Main roll mode</span>
+              <select id="main-mode" name="mainMode">
+                <option value="normal">Normal</option>
+                <option value="advantage">Advantage</option>
+                <option value="disadvantage">Disadvantage</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Difficulty</span>
+              <input
+                id="difficulty"
+                name="difficulty"
+                type="number"
+                value="20"
+                min="-999"
+                max="999"
+              />
+            </label>
+
+            <div class="actions">
+              <button type="submit">Roll</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="extras control-card">
+          <div class="extras-header">
+            <h2>Extra Rolls</h2>
+            <p>Add things like Guidance or Bardic Inspiration.</p>
+          </div>
+          <button type="button" id="add-extra" class="add-extra-button">
+            Add extra roll
+          </button>
+          <div id="extras-list" class="extras-list"></div>
+        </section>
+
+        <p id="error" class="error" role="alert"></p>
+
+        <section id="summary" class="summary" aria-live="polite"></section>
+
+        <section class="results-grid">
+          <article class="results-panel success-panel">
+            <h2>Successes</h2>
+            <div class="results-table-wrap">
+              <table class="results-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Check</th>
+                    <th scope="col">Main Roll</th>
+                    <th scope="col">Extra Rolls</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody id="success-results-body"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="results-panel fail-panel">
+            <h2>Fails</h2>
+            <div class="results-table-wrap">
+              <table class="results-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Check</th>
+                    <th scope="col">Main Roll</th>
+                    <th scope="col">Extra Rolls</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody id="fail-results-body"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+  </html>
